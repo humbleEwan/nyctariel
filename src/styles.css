@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	overscroll-behavior: none;
+}
+
+.shadow-box {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.shadow-box-2 {
+	box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+}
+
+.loader {
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	position: relative;
+}
+.loader::after, .loader::before {
+	content: '';
+	width: 48px;
+	height: 48px;
+	border: 2px solid #FFF;
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-sizing: border-box;
+	animation: rotation 2s ease-in-out infinite;
+}
+.loader::after {
+	border-color: #CA8A04;
+	animation-delay: 1s;
+}
+  
+@keyframes rotation {
+	0% {
+	  	transform: rotate(0deg);
+	}
+	100% {
+	  	transform: rotate(360deg);
+	}
+}
+
+tr:nth-child(even) {
+	background: linear-gradient(to right, rgba(205, 248, 136, 0.103), rgba(205, 248, 136, 0));
+}

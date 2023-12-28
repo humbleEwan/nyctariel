@@ -1,0 +1,28 @@
+<div *ngIf="!classesLoaded" class="w-full flex flex-col items-center mt-40">
+	<span class="loader"></span>
+</div>
+
+<div class="px-28 grid grid-cols-3 gap-32 pb-40 mt-40">
+
+	<div *ngFor="let it of classList" class="relative h-[40rem] bg-stone-500 rounded-lg">
+
+		<div class="absolute top-[-3rem] left-[-3rem]">
+			<img class="w-[24rem] h-[24rem] rounded-lg shadow-box-2" [src]="sApi.apiUrl + it.attributes.icon.data.attributes.url" />
+		</div>
+
+		<div class="absolute top-[23rem] px-10">
+			<div class="text-4xl text-white font-mono font-bold uppercase">
+				{{ it.attributes.name }}
+			</div>
+			<div class="font-bold text-stone-300">
+				{{ it.attributes.shortDescription }}
+			</div>
+		</div>
+
+		<div [routerLink]="['../class', it.id]" class="absolute bottom-10 shadow-2xl right-[-3rem] bg-stone-300 p-5 rounded-sm text-black text-4xl font-mono cursor-pointer transition-transform transform hover:scale-105">
+			See details
+		</div>
+
+	</div>
+
+</div>

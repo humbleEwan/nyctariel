@@ -1,0 +1,102 @@
+<div *ngIf="!classLoaded" class="w-full flex flex-col items-center mt-40">
+	<span class="loader"></span>
+</div>
+
+<div *ngIf="classLoaded" class="absolute top-0 left-0 flex h-full w-full bg-cover bg-center" style="background-image: url('{{ sApi.apiUrl + bgUrl }}');"></div>
+
+<div *ngIf="classLoaded" class="flex flex-col pl-20">
+
+	<div class="z-10 h-screen w-full static">
+
+		<div class="absolute top-[15rem] left-[5rem] h-[30rem] w-[20rem] bg-stone-500 rounded-sm">
+			<div class="relative top-[3rem] right-[-8rem] text-white text-6xl font-mono font-bold w-[24rem] text-center py-5 bg-stone-900 rounded-md shadow-box">
+				{{ className }}
+			</div>
+
+			<div class="z-20 relative bottom-[-15rem] right-[-8rem] w-[20rem] p-5 h-fit rounded-md bg-stone-900 shadow-box">
+				<div class="uppercase text-amber-600 mb-2 font-mono font-bold text-xl">Health</div>
+				<div class="flex flex-row gap-2 pl-2">
+					<p class="font-mono font-bold text-stone-400">Hit Dice:</p>
+					<p class="text-stone-500">1d{{ hitDie }} per {{ className }} level</p>
+				</div>
+				<div class="flex flex-row gap-2 pl-2">
+					<p class="font-mono font-bold text-stone-400">1st level HP:</p>
+					<p class="text-stone-500">{{ hitDie }} + CON modifier</p>
+				</div>
+				<div class="flex flex-row gap-2 pl-2">
+					<p class="font-mono font-bold text-stone-400">Max HP gain:</p>
+					<p class="text-stone-500">{{ hpGain }} + CON modifier</p>
+				</div>
+
+				<div class="uppercase text-amber-600 mb-2 font-mono font-bold text-xl mt-4">Proficiancies</div>
+				<div class="flex flex-row gap-2 pl-2">
+					<p class="font-mono font-bold text-stone-400">Armor:</p>
+					<p class="text-stone-500">{{ armorProf }}</p>
+				</div>
+				<div class="flex flex-row gap-2 pl-2">
+					<p class="font-mono font-bold text-stone-400">Weapon:</p>
+					<p class="text-stone-500">{{ weaponProf }}</p>
+				</div>
+				<div class="flex flex-row gap-2 pl-2">
+					<p class="font-mono font-bold text-stone-400">Saving throws:</p>
+					<p class="text-stone-500">{{ saveThrows }}</p>
+				</div>
+				<div class="flex flex-row gap-2 pl-2">
+					<p class="font-mono font-bold text-stone-400">Skills:</p>
+					<p class="text-stone-500">{{ skills }}</p>
+				</div>
+			</div>
+
+			<div class="absolute bottom-0 left-0">
+				<img src="../assets/misc/waves.png" />
+			</div>
+		</div>
+
+		<div class="absolute bottom-0 right-0 bg-stone-900 py-10 px-16 w-[35%] shadow-box rounded-sm">
+			<div class="text-amber-600 font-bold font-mono uppercase text-lg mb-4">
+				Class overview
+			</div>
+			<div class="text-stone-500 text-lg">
+				{{ about }}
+			</div>
+		</div>
+
+	</div>
+
+	<div class="w-full flex flex-col mb-20 pr-20">
+
+		<div class="flex flex-row gap-4 w-[100%]">
+			<div class="flex flex-col w-[50%]">
+				<div class="bg-stone-900 rounded-lg px-10 pt-5 pb-10 shadow-box">
+				
+					<table class="table-auto w-full">
+						<thead class="font-mono font-bold text-xl border-b-4 border-amber-600 text-stone-200">
+							<tr>
+								<th class="align-top py-5" *ngFor="let it of levelingTable.tableHeading">{{ it }}</th>
+							</tr>
+						</thead>
+						<div class="h-3"></div>
+						<tbody class="text-stone-400 text-xl">
+							<tr class="h-16" *ngFor="let it of levelingTable.levels; index as i">
+								<td class="py-3 font-bold font-mono text-2xl text-center">
+									{{ i + 1 }}
+								</td>
+								<td class="text-center py-3" *ngFor="let jt of it">{{ jt }}</td>
+							</tr>
+						</tbody>
+					</table>
+		
+				</div>
+			</div>
+
+			<div class="flex flex-col w-[50%]">
+				<div class="bg-stone-800 rounded-lg h-full">
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
